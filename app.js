@@ -2,8 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const grid = document.querySelector('.grid')
     const flagLeft = document.querySelector('#flag-left')
     const result = document.querySelector('#result')
-    const isDig = document.querySelector('#dig')
-    const isFlag = document.querySelector('#fg')
+    const btn = document.querySelector('#btn')
     const width = 10
     let isGameOver = false
     let bombAmount = 20
@@ -12,23 +11,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let squares = []
 
-    isDig.addEventListener('click', () => {
-        action = true
-        if (!isDig.classList.contains('chosen')) {
-            isDig.classList.add('chosen')
+    btn.addEventListener('click', () => {
+        if (action) {
+            btn.innerHTML = 'FLAG'
+            action = false
+        } else {
+            btn.innerHTML = 'DIG'
+            action = true
         }
-        if (isFlag.classList.contains('chosen')) {
-            isFlag.classList.remove('chosen')
-        }
-    })
-    isFlag.addEventListener('click', () => {
-        action = false
-        if (!isFlag.classList.contains('chosen')) {
-            isFlag.classList.add('chosen')
-        }
-        if (isDig.classList.contains('chosen')) {
-            isDig.classList.remove('chosen')
-        }
+
     })
 
     //Create a new board
@@ -50,15 +41,15 @@ document.addEventListener("DOMContentLoaded", () => {
             grid.appendChild(square)
             squares.push(square)
 
-            // Normal Click
-            square.addEventListener('click', () => {
-                click(square)
-            })
+            // // Normal Click
+            // square.addEventListener('click', () => {
+            //     click(square)
+            // })
 
-            // ctrl and left click
-            square.addEventListener('contextmenu', () => {
-                addFlag(square)
-            })
+            // // ctrl and left click
+            // square.addEventListener('contextmenu', () => {
+            //     addFlag(square)
+            // })
 
             square.addEventListener('click', () => {
                 if (action) click(square)
