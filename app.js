@@ -41,16 +41,6 @@ document.addEventListener("DOMContentLoaded", () => {
             grid.appendChild(square)
             squares.push(square)
 
-            // // Normal Click
-            // square.addEventListener('click', () => {
-            //     click(square)
-            // })
-
-            // // ctrl and left click
-            // square.addEventListener('contextmenu', () => {
-            //     addFlag(square)
-            // })
-
             square.addEventListener('click', () => {
                 if (action) click(square)
                 else addFlag(square)
